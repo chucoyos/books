@@ -4,12 +4,29 @@
   <thead>
     <tr>
       <th>Title</th>
+      <th>Author</th>
+      <th>Description</th>
+      <th>Publicated</th>
+      <th>Price</th>
+      <th>Detalles</th>
+      <th>Opciones</th>
     </tr>
+
   </thead>
   <tbody>
   <% @books.each do |book| %>
     <tr>
-      <td><%= book %></td>
+      <td><%= book.title %></td>
+      <td><%= book.author %></td>
+      <td><%= book.description %></td>
+      <td><%= book.publication_date %></td>
+      <td>$<%= book.price %></td>
+      <td><%= link_to "Ver", book_path(book) %></td>
+      <td>
+      <%= link_to "Eliminar", book_path(book), 
+      method: :delete,
+      data: { confirm: "Desea eliminar este libro?"} %>
+      </td>
     </tr>
   <% end %>
     

@@ -1,0 +1,10 @@
+<h1>Book Detail</h1>
+<div>Título: <%= @book.title%></div>
+<div>Autor: <%= @book.author%></div>
+<div>Autor: <%= @book.description%></div>
+<div>Fecha de Publicación: <%= @book.publication_date%></div>
+<div>Precio: <%= @book.price%></div>
+<div><%= link_to "Editar Libro", edit_book_path(@book) %> <%= link_to "Back", :back %>
+<%= link_to "Eliminar", book_path(@book), 
+method: :delete,
+data: { confirm: "Desea eliminar este libro?"} %></div>
