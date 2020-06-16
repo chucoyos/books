@@ -4,7 +4,14 @@
 <div>Autor: <%= @book.description%></div>
 <div>Fecha de Publicación: <%= @book.publication_date%></div>
 <div>Precio: <%= @book.price%></div>
-<div><%= link_to "Editar Libro", edit_book_path(@book) %> <%= link_to "Back", :back %>
+<%= link_to "Back", :back %>
+ <% if signed_in? %>
+ <div><%= link_to "Editar Libro", edit_book_path(@book) %>
 <%= link_to "Eliminar", book_path(@book), 
 method: :delete,
 data: { confirm: "Desea eliminar este libro?"} %></div>
+    <%= link_to "Salir", destroy_user_session_path, method: :delete %>
+  <% else %>
+    <%= link_to "Registrarse", new_user_registration_path %>
+    <%= link_to "Ingresar", new_user_session_path %>
+  <% end %>

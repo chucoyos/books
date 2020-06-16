@@ -13,9 +13,19 @@
   <div class="w3-container w3-dark-gray w3-card">
    <nav class="">
     <%= link_to "Libros", books_path %>
-    <%= link_to "Crear Libro", new_book_path %>
+     <% if signed_in? %>
+     <%= link_to "Crear Libro", new_book_path %>
+    <%= link_to "Salir", destroy_user_session_path, method: :delete %>
+  <% else %>
+    <%= link_to "Registrarse", new_user_registration_path %>
+    <%= link_to "Ingresar", new_user_session_path %>
+  <% end %>
    </nav>
-  </div>
+ 
+
+ 
+</div>
+
   <% flash.each do |name, msg| -%>
   <%= content_tag :div, msg, class: name %>
   <% end -%>
